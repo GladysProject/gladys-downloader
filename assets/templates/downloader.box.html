@@ -1,0 +1,30 @@
+<div class="callout callout-danger ng-cloak" ng-show="vm.error">
+                    <h4>Error</h4>
+                    <p>{{vm.error}}</p>
+</div>
+<table class="table table-bordered">
+	<tbody>
+		<tr>
+			<th>File</th>
+			<th>Action</th>
+		</tr>
+		<tr ng-repeat="download in vm.downloads" class="ng-cloak">
+			<td class="download-name">{{download.name}}</td>
+			<td>
+				<!--<div ng-show="!download.finished" class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" aria-valuenow="{{download.progress}}" aria-valuemin="0" aria-valuemax="100">
+							<span class="sr-only">{{download.progress}}% Complete</span>
+				</div>-->
+				<div ng-show="!download.finished">{{download.progress}}%</div>
+				<div ng-show="download.finished">Downloaded !</div>
+			</td>
+		</tr>
+	<tr>
+		<td>
+			<input type="text" class="form-control" ng-model="vm.newUrl" id="urlToDownload" placeholder="Url">
+		</td> 
+		<td>
+			<button ng-click="vm.download(vm.newUrl)" class="btn btn-success btn-sm">Download</button>
+		</td>
+	</tr>
+	</tbody>
+</table>
